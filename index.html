@@ -104,7 +104,7 @@
         }
 
         /* --- Sections --- */
-        section { padding: 8rem 10%; min-height: 60vh; }
+        section { padding: 8rem 10%; }
         .section-header { text-align: center; margin-bottom: 4rem; }
         .divider { width: 40px; height: 1px; background: var(--gold); margin: 20px auto; }
 
@@ -113,13 +113,14 @@
         .card:hover { border-color: var(--gold); transform: translateY(-5px); }
         .card i { font-size: 2.2rem; color: var(--gold); margin-bottom: 1rem; display: block; }
 
-        /* --- Restored Footer Content --- */
-        footer { background: var(--midnight); color: #fff; padding: 5rem 10% 2rem; }
+        /* --- Footer (Now targeted as the contact section) --- */
+        #contact-section { padding: 0; }
+        footer { background: var(--midnight); color: #fff; padding: 6rem 10% 2rem; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 4rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 4rem; }
         .footer-col h4 { color: var(--gold); font-family: 'Playfair Display', serif; font-size: 1rem; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 2px; }
         .footer-col p { font-size: 0.85rem; font-weight: 200; opacity: 0.8; margin-bottom: 0.6rem; }
 
-        .disclaimer { font-size: 0.7rem; opacity: 0.5; text-align: center; padding-top: 2rem; max-width: 900px; margin: 0 auto; }
+        .disclaimer { font-size: 0.7rem; opacity: 0.5; text-align: center; padding-top: 2rem; max-width: 900px; margin: 0 auto; line-height: 1.6;}
 
         @media (max-width: 850px) {
             .nav-links { position: fixed; right: -100%; top: 70px; flex-direction: column; background: #fff; width: 100%; height: calc(100vh - 70px); transition: 0.4s; }
@@ -158,7 +159,7 @@
         <div class="grid">
             <div class="card"><i class="bi bi-shield-check"></i><h3>Criminal Defense</h3><p>Strategic representation in penal litigation.</p></div>
             <div class="card"><i class="bi bi-bank"></i><h3>Civil & Commercial</h3><p>Counsel for corporate disputes and insolvency.</p></div>
-            <div class="card"><i class="bi bi-file-earmark-text"></i><h3>Constitutional Law</h3><p>Writ jurisdiction and fundamental rights.</p></div>
+            <div class="card"><i class="bi bi-file-earmark-text"></i><h3>Constitutional Law</h3><p>Writ jurisdiction and fundamental rights advocacy.</p></div>
         </div>
     </section>
 
@@ -170,8 +171,8 @@
         </div>
     </section>
 
-    <section id="contact-section" style="padding: 0; min-height: auto;">
-        <footer id="contact">
+    <section id="contact-section">
+        <footer>
             <div class="footer-grid">
                 <div class="footer-col">
                     <h4>CHAMBERS</h4>
@@ -191,7 +192,7 @@
                     <p><strong>Tel:</strong> 0172-2274650</p>
                 </div>
             </div>
-            <p class="disclaimer">DISCLAIMER: As per BCI rules, this website is for informational purposes only and does not constitute a solicitation or legal advice.</p>
+            <p class="disclaimer">DISCLAIMER: As per BCI rules, this website is for informational purposes only and does not constitute legal advice.</p>
         </footer>
     </section>
 
@@ -207,28 +208,35 @@
             menuToggle.querySelector('i').classList.toggle('bi-x');
         });
 
-        // Precision Scroll Spy Logic
         function highlightMenu() {
             let scrollY = window.pageYOffset;
-            
-            sections.forEach(current => {
-                const sectionHeight = current.offsetHeight;
-                const sectionTop = current.offsetTop - 150; // Offset for the fixed header
-                const sectionId = current.getAttribute('id');
+            let current = "";
 
-                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                    navLinks.forEach(link => {
-                        link.classList.remove('active');
-                        if (link.getAttribute('href').includes(sectionId)) {
-                            link.classList.add('active');
-                        }
-                    });
+            // Check if user is at the bottom of the page
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+                current = "contact-section";
+            } else {
+                sections.forEach(section => {
+                    const sectionHeight = section.offsetHeight;
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionId = section.getAttribute('id');
+
+                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                        current = sectionId;
+                    }
+                });
+            }
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
                 }
             });
         }
 
         window.addEventListener('scroll', highlightMenu);
-        window.addEventListener('load', highlightMenu); // Ensure it highlights on page load
+        window.addEventListener('load', highlightMenu);
 
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
