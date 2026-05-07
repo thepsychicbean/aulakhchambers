@@ -10,12 +10,11 @@
 
     <style>
         :root {
-            /* Authoritative Palette: Deep Blue, Burnished Gold, Ivory */
-            --primary-blue: #101a31;    /* Deep, powerful Midnight Blue */
-            --accent-gold: #c5a059;     /* Burnished Gold for prestige */
-            --ivory: #fcfaf7;           /* Off-white background */
-            --text-on-light: #333333;   /* Sharp black/gray for ivory bg */
-            --text-on-dark: #f0f0f0;    /* Light gray for blue bg */
+            /* Power Palette: Blue, Gold, Ivory */
+            --primary-blue: #101a31;    /* Authoritative Midnight Blue */
+            --accent-gold: #c5a059;     /* Prestige Burnished Gold */
+            --ivory-bg: #fcfaf7;        /* Clean, non-white body */
+            --text-dark: #222222;       /* Strict text color */
             --card-white: #ffffff;
             --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
@@ -28,29 +27,29 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: var(--ivory);
-            color: var(--text-on-light);
+            background-color: var(--ivory-bg);
+            color: var(--text-dark);
             line-height: 1.7;
             overflow-x: hidden;
         }
 
-        /* --- Navigation --- */
+        /* --- Authoritative Navigation --- */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 8%;
-            background: rgba(255, 255, 255, 0.98);
+            padding: 1.2rem 8%;
+            background: rgba(255, 255, 255, 0.99);
             position: fixed;
             width: 100%;
             z-index: 1000;
-            border-bottom: 2px solid rgba(197, 160, 89, 0.3); /* Subtle Gold border */
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-bottom: 2px solid rgba(16, 26, 49, 0.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
         }
 
         .logo {
             font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: 700;
             letter-spacing: 2px;
             color: var(--primary-blue);
@@ -69,23 +68,23 @@
             color: var(--primary-blue);
             font-size: 0.8rem;
             font-weight: 600;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
             transition: var(--transition);
         }
 
         .nav-links a:hover { color: var(--accent-gold); }
 
-        /* --- Hero Section --- */
+        /* --- Hero Section - Midnight Blue Overlay --- */
         .hero {
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            /* Blue Gradient over your Main Office Photo */
-            background: linear-gradient(rgba(16, 26, 49, 0.85), rgba(16, 26, 49, 0.9)), 
-                        url('Office main.jpeg'); /* This looks for your uploaded office photo */
+            /* Power Theme: Midnight blue gradient over office photo */
+            background: linear-gradient(rgba(16, 26, 49, 0.88), rgba(16, 26, 49, 0.92)), 
+                        url('Office main.jpeg');
             background-size: cover;
             background-attachment: fixed;
             background-position: center;
@@ -95,7 +94,7 @@
 
         .hero-content h1 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-size: clamp(2.8rem, 7vw, 4.8rem);
             font-weight: 400;
             margin-bottom: 1.5rem;
             letter-spacing: -1px;
@@ -103,46 +102,48 @@
         }
 
         .hero-content p {
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto 2rem;
+            font-size: 1.15rem;
+            max-width: 750px;
+            margin: 0 auto 2.5rem;
             font-weight: 300;
             letter-spacing: 1px;
             opacity: 0.9;
+            color: #f0f0f0;
         }
 
         .btn-cta {
-            padding: 1.2rem 2.5rem;
+            padding: 1.2rem 2.8rem;
             background: transparent;
             color: #fff;
             text-decoration: none;
             text-transform: uppercase;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 600;
             letter-spacing: 2px;
             transition: var(--transition);
-            border: 2px solid #fff;
+            border: 2px solid rgba(255, 255, 255, 0.8);
         }
 
         .btn-cta:hover {
             background: #fff;
             color: var(--primary-blue);
+            border-color: #fff;
         }
 
         /* --- Practice Grid --- */
-        .section-padding { padding: 8rem 10%; }
+        .section-padding { padding: 9rem 10%; }
 
-        .section-header { text-align: center; margin-bottom: 5rem; }
+        .section-header { text-align: center; margin-bottom: 6rem; }
 
         .section-header h2 {
             font-family: 'Playfair Display', serif;
             font-size: 2.8rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
             color: var(--primary-blue);
         }
 
         .gold-divider {
-            width: 80px;
+            width: 100px;
             height: 3px;
             background: var(--accent-gold);
             margin: 0 auto;
@@ -150,28 +151,28 @@
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
         }
 
         .card {
             background: var(--card-white);
-            padding: 3.5rem 2.5rem;
-            border: 1px solid rgba(16, 26, 49, 0.05); /* Very subtle Blue border */
+            padding: 4rem 2.8rem;
+            border: 1px solid rgba(16, 26, 49, 0.04); /* Very subtle Blue border */
             transition: var(--transition);
             position: relative;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            box-shadow: 0 4px 15px rgba(16, 26, 49, 0.02);
         }
 
         .card:hover {
             transform: translateY(-10px);
             border-color: var(--accent-gold);
-            box-shadow: 0 20px 40px rgba(16, 26, 49, 0.08); /* Blue-tinted shadow */
+            box-shadow: 0 20px 50px rgba(16, 26, 49, 0.1); /* Blue-tinted power shadow */
         }
 
-        /* ICON STYLING - Using Gold as requested */
+        /* ICONS - Utilizing Prestige Gold */
         .card i {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             color: var(--accent-gold);
             margin-bottom: 2rem;
             display: block;
@@ -186,20 +187,20 @@
 
         .card p {
             font-size: 0.95rem;
-            color: var(--text-gray);
+            color: #666;
             font-weight: 300;
         }
 
-        /* --- Contact/Footer --- */
+        /* --- Authority Contact/Footer --- */
         footer {
             background: var(--primary-blue);
-            color: var(--text-on-dark);
-            padding: 6rem 10% 2rem;
+            color: #f0f0f0;
+            padding: 7rem 10% 2rem;
         }
 
         .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 4rem;
             border-bottom: 1px solid rgba(255,255,255,0.08);
             padding-bottom: 5rem;
@@ -208,16 +209,16 @@
         .footer-col h4 {
             color: var(--accent-gold);
             font-family: 'Playfair Display', serif;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.8rem;
             font-size: 1.3rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
         }
 
         .footer-col p {
             font-size: 0.95rem;
-            opacity: 0.8;
-            margin-bottom: 0.6rem;
+            opacity: 0.85;
+            margin-bottom: 0.7rem;
             font-weight: 300;
         }
 
@@ -228,21 +229,23 @@
             font-size: 0.75rem;
             opacity: 0.5;
             padding-top: 2.5rem;
-            max-width: 900px;
+            max-width: 950px;
             margin: 0 auto;
-            line-height: 1.6;
+            line-height: 1.7;
+            color: #fff;
         }
 
-        /* Responsive Tweaks */
+        /* Responsive Power Layout */
         @media (max-width: 992px) {
-            .hero-content h1 { font-size: 3rem; }
-            .section-padding { padding: 6rem 5%; }
+            .hero-content h1 { font-size: 3.2rem; }
+            .section-padding { padding: 7rem 5%; }
         }
 
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .grid { grid-template-columns: 1fr; }
-            .card { padding: 2.5rem 2rem; }
+            .card { padding: 3rem 2rem; }
+            .hero-content h1 { font-size: 2.8rem; }
         }
     </style>
 </head>
@@ -272,7 +275,7 @@
         </div>
         <div class="grid">
             <div class="card">
-                <i class="bi bi-shield-check"></i>
+                <i class="bi bi-shield-lock"></i>
                 <h3>Criminal Defense</h3>
                 <p>Sophisticated defense strategies for penal litigation, white-collar offenses, and regulatory compliance.</p>
             </div>
