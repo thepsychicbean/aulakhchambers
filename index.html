@@ -11,8 +11,8 @@
     <style>
         :root {
             --midnight: #101a31;   
-            --midnight-light: #1c2b4d; /* Lighter blue for highlight */
-            --gold: #d4af37;           /* Lighter, more luminous gold */
+            --midnight-light: #1c2b4d; 
+            --gold: #d4af37;           
             --ivory: #fdfdfd;      
             --transition: all 0.3s ease;
         }
@@ -49,7 +49,6 @@
             font-weight: 700;
         }
 
-        /* Desktop Menu */
         .nav-links {
             display: flex;
             list-style: none;
@@ -65,7 +64,7 @@
             font-weight: 600;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            padding: 0 20px;
+            padding: 0 25px;
             height: 100%;
             display: flex;
             align-items: center;
@@ -73,20 +72,14 @@
             border-bottom: 3px solid transparent;
         }
 
-        /* Lighter Highlight State */
+        /* The Lighter Highlight */
         .nav-links a.active, .nav-links a:hover {
             background-color: var(--midnight-light);
             color: var(--gold);
             border-bottom: 3px solid var(--gold);
         }
 
-        /* Mobile Menu Toggle */
-        .mobile-toggle {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--midnight);
-        }
+        .mobile-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: var(--midnight); }
 
         /* --- Hero --- */
         .hero {
@@ -111,63 +104,27 @@
         }
 
         /* --- Sections --- */
-        section { padding: 6rem 10%; }
+        section { padding: 8rem 10%; min-height: 60vh; }
         .section-header { text-align: center; margin-bottom: 4rem; }
         .divider { width: 40px; height: 1px; background: var(--gold); margin: 20px auto; }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .card {
-            background: #fff;
-            padding: 3rem 2rem;
-            border: 1px solid #eee;
-            transition: var(--transition);
-            text-align: center;
-        }
-
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .card { background: #fff; padding: 3rem 2rem; border: 1px solid #eee; transition: var(--transition); text-align: center; }
         .card:hover { border-color: var(--gold); transform: translateY(-5px); }
         .card i { font-size: 2.2rem; color: var(--gold); margin-bottom: 1rem; display: block; }
 
-        /* --- Footer --- */
-        footer { background: var(--midnight); color: #fff; padding: 4rem 10% 2rem; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; }
-        .footer-col h4 { color: var(--gold); margin-bottom: 1rem; font-size: 0.9rem; letter-spacing: 2px; }
+        /* --- Restored Footer Content --- */
+        footer { background: var(--midnight); color: #fff; padding: 5rem 10% 2rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 4rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 4rem; }
+        .footer-col h4 { color: var(--gold); font-family: 'Playfair Display', serif; font-size: 1rem; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 2px; }
+        .footer-col p { font-size: 0.85rem; font-weight: 200; opacity: 0.8; margin-bottom: 0.6rem; }
 
-        /* --- Mobile Styles --- */
+        .disclaimer { font-size: 0.7rem; opacity: 0.5; text-align: center; padding-top: 2rem; max-width: 900px; margin: 0 auto; }
+
         @media (max-width: 850px) {
-            .nav-links {
-                position: fixed;
-                right: -100%;
-                top: 70px;
-                flex-direction: column;
-                background: #fff;
-                width: 100%;
-                height: calc(100vh - 70px);
-                transition: 0.4s;
-                text-align: center;
-                border-top: 1px solid #eee;
-            }
-
+            .nav-links { position: fixed; right: -100%; top: 70px; flex-direction: column; background: #fff; width: 100%; height: calc(100vh - 70px); transition: 0.4s; }
             .nav-links.active { right: 0; }
-
-            .nav-links li { width: 100%; height: auto; }
-
-            .nav-links a {
-                padding: 25px;
-                justify-content: center;
-                border-bottom: 1px solid #eee;
-            }
-
-            .nav-links a.active {
-                background-color: var(--ivory);
-                color: var(--gold);
-                border-bottom: 1px solid #eee;
-            }
-
+            .nav-links a { padding: 25px; border-bottom: 1px solid #eee; width: 100%; justify-content: center; }
             .mobile-toggle { display: block; }
         }
     </style>
@@ -176,22 +133,20 @@
 
     <nav>
         <div class="logo">Aulakh Chambers</div>
-        <div class="mobile-toggle" id="mobile-menu">
-            <i class="bi bi-list"></i>
-        </div>
+        <div class="mobile-toggle" id="mobile-menu"><i class="bi bi-list"></i></div>
         <ul class="nav-links" id="nav-list">
-            <li><a href="#home" class="active">Home</a></li>
-            <li><a href="#practices">Practices</a></li>
-            <li><a href="#about">The Firm</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#home" class="nav-item">Home</a></li>
+            <li><a href="#practices" class="nav-item">Practices</a></li>
+            <li><a href="#about" class="nav-item">The Firm</a></li>
+            <li><a href="#contact-section" class="nav-item">Contact</a></li>
         </ul>
     </nav>
 
     <section id="home" class="hero" style="padding: 0;">
         <div class="hero-content">
-            <i class="bi bi-balance-scale" style="font-size: 2rem; color: var(--gold); margin-bottom: 15px; display: block;"></i>
+            <i class="bi bi-balance-scale" style="font-size: 2.2rem; color: var(--gold); margin-bottom: 15px; display: block;"></i>
             <h1>Excellence In Advocacy.</h1>
-            <p style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.8rem; font-weight: 200;">Punjab & Haryana High Court</p>
+            <p style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.8rem; font-weight: 200;">Punjab & Haryana High Court | Chandigarh</p>
         </div>
     </section>
 
@@ -201,21 +156,9 @@
             <div class="divider"></div>
         </div>
         <div class="grid">
-            <div class="card">
-                <i class="bi bi-shield-check"></i>
-                <h3>Criminal Defense</h3>
-                <p>Strategic representation in penal litigation.</p>
-            </div>
-            <div class="card">
-                <i class="bi bi-bank"></i>
-                <h3>Civil & Commercial</h3>
-                <p>Counsel for corporate disputes and insolvency.</p>
-            </div>
-            <div class="card">
-                <i class="bi bi-file-earmark-text"></i>
-                <h3>Constitutional Law</h3>
-                <p>Writ jurisdiction and fundamental rights.</p>
-            </div>
+            <div class="card"><i class="bi bi-shield-check"></i><h3>Criminal Defense</h3><p>Strategic representation in penal litigation.</p></div>
+            <div class="card"><i class="bi bi-bank"></i><h3>Civil & Commercial</h3><p>Counsel for corporate disputes and insolvency.</p></div>
+            <div class="card"><i class="bi bi-file-earmark-text"></i><h3>Constitutional Law</h3><p>Writ jurisdiction and fundamental rights.</p></div>
         </div>
     </section>
 
@@ -223,64 +166,75 @@
         <div class="section-header">
             <h2>The Firm</h2>
             <div class="divider"></div>
-            <p style="max-width: 600px; margin: 0 auto; font-weight: 300; font-size: 0.9rem;">
-                A premier litigation practice based in Chandigarh. Led by Suneet Pal Singh Aulakh, we bridge legal heritage with modern, result-oriented strategy.
-            </p>
+            <p style="max-width: 700px; margin: 0 auto; font-weight: 300;">A premier litigation practice based in Chandigarh. Led by Suneet Pal Singh Aulakh, we combine decades of heritage with modern, result-oriented strategy.</p>
         </div>
     </section>
 
-    <footer id="contact">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4>CHAMBERS</h4>
-                <p>Room No. 30, New Bar Complex, Chandigarh</p>
+    <section id="contact-section" style="padding: 0; min-height: auto;">
+        <footer id="contact">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>CHAMBERS</h4>
+                    <p>Room No. 30, New Bar Complex</p>
+                    <p>Punjab & Haryana High Court, Chandigarh</p>
+                </div>
+                <div class="footer-col">
+                    <h4>OFFICE</h4>
+                    <p>H.No. 40, Phase-4</p>
+                    <p>Sector 59, Mohali, Punjab</p>
+                </div>
+                <div class="footer-col">
+                    <h4>CONNECT</h4>
+                    <p><strong>Counsel:</strong> +91 98888-99650</p>
+                    <p><strong>Clerk (Rafiq):</strong> +91 95011-34650</p>
+                    <p><strong>Email:</strong> aulakhchambers@gmail.com</p>
+                    <p><strong>Tel:</strong> 0172-2274650</p>
+                </div>
             </div>
-            <div class="footer-col">
-                <h4>CONNECT</h4>
-                <p>Direct: +91 98888-99650</p>
-                <p>Email: aulakhchambers@gmail.com</p>
-            </div>
-        </div>
-    </footer>
+            <p class="disclaimer">DISCLAIMER: As per BCI rules, this website is for informational purposes only and does not constitute a solicitation or legal advice.</p>
+        </footer>
+    </section>
 
     <script>
-        // Mobile Menu Toggle Logic
         const menuToggle = document.getElementById('mobile-menu');
         const navList = document.getElementById('nav-list');
+        const navLinks = document.querySelectorAll('.nav-item');
+        const sections = document.querySelectorAll('section');
 
         menuToggle.addEventListener('click', () => {
             navList.classList.toggle('active');
-            const icon = menuToggle.querySelector('i');
-            icon.classList.toggle('bi-list');
-            icon.classList.toggle('bi-x');
+            menuToggle.querySelector('i').classList.toggle('bi-list');
+            menuToggle.querySelector('i').classList.toggle('bi-x');
         });
 
-        // Close menu when a link is clicked
-        const links = document.querySelectorAll('.nav-links a');
-        links.forEach(link => {
+        // Precision Scroll Spy Logic
+        function highlightMenu() {
+            let scrollY = window.pageYOffset;
+            
+            sections.forEach(current => {
+                const sectionHeight = current.offsetHeight;
+                const sectionTop = current.offsetTop - 150; // Offset for the fixed header
+                const sectionId = current.getAttribute('id');
+
+                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href').includes(sectionId)) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }
+
+        window.addEventListener('scroll', highlightMenu);
+        window.addEventListener('load', highlightMenu); // Ensure it highlights on page load
+
+        navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 navList.classList.remove('active');
                 menuToggle.querySelector('i').classList.add('bi-list');
                 menuToggle.querySelector('i').classList.remove('bi-x');
-            });
-        });
-
-        // Scroll Spy Logic
-        const sections = document.querySelectorAll("section");
-        window.addEventListener("scroll", () => {
-            let current = "";
-            sections.forEach((section) => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 100) {
-                    current = section.getAttribute("id");
-                }
-            });
-
-            links.forEach((a) => {
-                a.classList.remove("active");
-                if (a.getAttribute("href").includes(current)) {
-                    a.classList.add("active");
-                }
             });
         });
     </script>
