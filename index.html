@@ -10,10 +10,10 @@
 
     <style>
         :root {
-            --midnight: #0a1128;   /* Power Blue */
-            --gold: #c5a059;       /* Prestige Gold */
+            --midnight: #101a31;   
+            --midnight-light: #1c2b4d; /* Lighter blue for highlight */
+            --gold: #d4af37;           /* Lighter, more luminous gold */
             --ivory: #fdfdfd;      
-            --text-gray: #666;
             --transition: all 0.3s ease;
         }
 
@@ -27,7 +27,7 @@
             line-height: 1.6;
         }
 
-        /* --- Slim Nav with Active Highlighting --- */
+        /* --- Navigation --- */
         nav {
             display: flex;
             justify-content: space-between;
@@ -46,19 +46,17 @@
             font-size: 1.1rem;
             letter-spacing: 3px;
             text-transform: uppercase;
+            font-weight: 700;
         }
 
+        /* Desktop Menu */
         .nav-links {
             display: flex;
             list-style: none;
             height: 100%;
         }
 
-        .nav-links li {
-            height: 100%;
-            display: flex;
-            align-items: center;
-        }
+        .nav-links li { height: 100%; }
 
         .nav-links a {
             text-decoration: none;
@@ -75,21 +73,29 @@
             border-bottom: 3px solid transparent;
         }
 
-        /* The "Selected" State requested: Blue Background & Gold Border */
+        /* Lighter Highlight State */
         .nav-links a.active, .nav-links a:hover {
-            background-color: var(--midnight);
+            background-color: var(--midnight-light);
             color: var(--gold);
             border-bottom: 3px solid var(--gold);
         }
 
-        /* --- Slim Hero --- */
+        /* Mobile Menu Toggle */
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--midnight);
+        }
+
+        /* --- Hero --- */
         .hero {
             height: 80vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: linear-gradient(rgba(10, 17, 40, 0.92), rgba(10, 17, 40, 0.88)), 
+            background: linear-gradient(rgba(16, 26, 49, 0.9), rgba(16, 26, 49, 0.85)), 
                         url('Office main.jpeg');
             background-size: cover;
             background-attachment: fixed;
@@ -102,21 +108,11 @@
             font-size: clamp(2rem, 5vw, 3.5rem);
             font-weight: 400;
             font-style: italic;
-            margin-bottom: 10px;
-        }
-
-        .hero-content p {
-            font-weight: 200;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            opacity: 0.7;
         }
 
         /* --- Sections --- */
-        section { padding: 8rem 10%; }
-        .section-header { text-align: center; margin-bottom: 5rem; }
-        .section-header h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 400; }
+        section { padding: 6rem 10%; }
+        .section-header { text-align: center; margin-bottom: 4rem; }
         .divider { width: 40px; height: 1px; background: var(--gold); margin: 20px auto; }
 
         .grid {
@@ -127,31 +123,52 @@
 
         .card {
             background: #fff;
-            padding: 4rem 2rem;
+            padding: 3rem 2rem;
             border: 1px solid #eee;
             transition: var(--transition);
             text-align: center;
         }
 
-        .card:hover {
-            border-color: var(--gold);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-        }
-
-        .card i { font-size: 2.5rem; color: var(--gold); margin-bottom: 1.5rem; display: block; }
-        .card h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 400; margin-bottom: 1rem; }
-        .card p { font-size: 0.85rem; font-weight: 300; color: var(--text-gray); }
+        .card:hover { border-color: var(--gold); transform: translateY(-5px); }
+        .card i { font-size: 2.2rem; color: var(--gold); margin-bottom: 1rem; display: block; }
 
         /* --- Footer --- */
-        footer { background: var(--midnight); color: #fff; padding: 5rem 10% 2rem; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; padding-bottom: 3rem; }
-        .footer-col h4 { color: var(--gold); font-family: 'Playfair Display', serif; font-size: 1rem; margin-bottom: 1.2rem; text-transform: uppercase; letter-spacing: 2px; }
-        .footer-col p { font-size: 0.8rem; font-weight: 200; opacity: 0.7; margin-bottom: 0.5rem; }
-        .disclaimer { font-size: 0.65rem; font-weight: 200; opacity: 0.4; text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 2rem;}
+        footer { background: var(--midnight); color: #fff; padding: 4rem 10% 2rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; }
+        .footer-col h4 { color: var(--gold); margin-bottom: 1rem; font-size: 0.9rem; letter-spacing: 2px; }
 
-        @media (max-width: 768px) {
-            nav { padding: 0 5%; }
-            .nav-links { display: none; } /* Mobile menu would require a toggle, kept slim for now */
+        /* --- Mobile Styles --- */
+        @media (max-width: 850px) {
+            .nav-links {
+                position: fixed;
+                right: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: #fff;
+                width: 100%;
+                height: calc(100vh - 70px);
+                transition: 0.4s;
+                text-align: center;
+                border-top: 1px solid #eee;
+            }
+
+            .nav-links.active { right: 0; }
+
+            .nav-links li { width: 100%; height: auto; }
+
+            .nav-links a {
+                padding: 25px;
+                justify-content: center;
+                border-bottom: 1px solid #eee;
+            }
+
+            .nav-links a.active {
+                background-color: var(--ivory);
+                color: var(--gold);
+                border-bottom: 1px solid #eee;
+            }
+
+            .mobile-toggle { display: block; }
         }
     </style>
 </head>
@@ -159,7 +176,10 @@
 
     <nav>
         <div class="logo">Aulakh Chambers</div>
-        <ul class="nav-links">
+        <div class="mobile-toggle" id="mobile-menu">
+            <i class="bi bi-list"></i>
+        </div>
+        <ul class="nav-links" id="nav-list">
             <li><a href="#home" class="active">Home</a></li>
             <li><a href="#practices">Practices</a></li>
             <li><a href="#about">The Firm</a></li>
@@ -171,7 +191,7 @@
         <div class="hero-content">
             <i class="bi bi-balance-scale" style="font-size: 2rem; color: var(--gold); margin-bottom: 15px; display: block;"></i>
             <h1>Excellence In Advocacy.</h1>
-            <p>Punjab & Haryana High Court | Chandigarh</p>
+            <p style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.8rem; font-weight: 200;">Punjab & Haryana High Court</p>
         </div>
     </section>
 
@@ -184,17 +204,17 @@
             <div class="card">
                 <i class="bi bi-shield-check"></i>
                 <h3>Criminal Defense</h3>
-                <p>Strategic representation in penal litigation and white-collar defense.</p>
+                <p>Strategic representation in penal litigation.</p>
             </div>
             <div class="card">
                 <i class="bi bi-bank"></i>
                 <h3>Civil & Commercial</h3>
-                <p>Sophisticated counsel for corporate disputes and insolvency matters.</p>
+                <p>Counsel for corporate disputes and insolvency.</p>
             </div>
             <div class="card">
                 <i class="bi bi-file-earmark-text"></i>
                 <h3>Constitutional Law</h3>
-                <p>Expert writ jurisdiction and fundamental rights advocacy.</p>
+                <p>Writ jurisdiction and fundamental rights.</p>
             </div>
         </div>
     </section>
@@ -203,8 +223,8 @@
         <div class="section-header">
             <h2>The Firm</h2>
             <div class="divider"></div>
-            <p style="max-width: 700px; margin: 0 auto; font-weight: 300; font-size: 1rem;">
-                Aulakh Chambers is a premier litigation practice based in the Chandigarh Tricity. Led by Suneet Pal Singh Aulakh, we combine decades of legal heritage with a modern, result-oriented approach to complex legal challenges.
+            <p style="max-width: 600px; margin: 0 auto; font-weight: 300; font-size: 0.9rem;">
+                A premier litigation practice based in Chandigarh. Led by Suneet Pal Singh Aulakh, we bridge legal heritage with modern, result-oriented strategy.
             </p>
         </div>
     </section>
@@ -213,28 +233,40 @@
         <div class="footer-grid">
             <div class="footer-col">
                 <h4>CHAMBERS</h4>
-                <p>Room No. 30, New Bar Complex</p>
-                <p>Punjab & Haryana High Court</p>
-            </div>
-            <div class="footer-col">
-                <h4>OFFICE</h4>
-                <p>H.No. 40, Phase-4, Sector 59</p>
-                <p>Mohali, Punjab</p>
+                <p>Room No. 30, New Bar Complex, Chandigarh</p>
             </div>
             <div class="footer-col">
                 <h4>CONNECT</h4>
-                <p>Counsel: +91 98888-99650</p>
+                <p>Direct: +91 98888-99650</p>
                 <p>Email: aulakhchambers@gmail.com</p>
             </div>
         </div>
-        <p class="disclaimer">The Bar Council of India does not permit advertisement or solicitation. This website is for informational purposes only.</p>
     </footer>
 
     <script>
-        // Script to highlight the menu item as you scroll
-        const sections = document.querySelectorAll("section");
-        const navLinks = document.querySelectorAll(".nav-links a");
+        // Mobile Menu Toggle Logic
+        const menuToggle = document.getElementById('mobile-menu');
+        const navList = document.getElementById('nav-list');
 
+        menuToggle.addEventListener('click', () => {
+            navList.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.toggle('bi-list');
+            icon.classList.toggle('bi-x');
+        });
+
+        // Close menu when a link is clicked
+        const links = document.querySelectorAll('.nav-links a');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                navList.classList.remove('active');
+                menuToggle.querySelector('i').classList.add('bi-list');
+                menuToggle.querySelector('i').classList.remove('bi-x');
+            });
+        });
+
+        // Scroll Spy Logic
+        const sections = document.querySelectorAll("section");
         window.addEventListener("scroll", () => {
             let current = "";
             sections.forEach((section) => {
@@ -244,7 +276,7 @@
                 }
             });
 
-            navLinks.forEach((a) => {
+            links.forEach((a) => {
                 a.classList.remove("active");
                 if (a.getAttribute("href").includes(current)) {
                     a.classList.add("active");
