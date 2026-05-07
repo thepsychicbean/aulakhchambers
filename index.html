@@ -10,11 +10,13 @@
 
     <style>
         :root {
-            --primary-dark: #121212;
-            --accent-gold: #c5a059;
-            --deep-burgundy: #4a0e0e; /* Inspired by the office leather chairs */
-            --off-white: #fcfaf7;
-            --text-gray: #555;
+            /* Authoritative Palette: Deep Blue, Burnished Gold, Ivory */
+            --primary-blue: #101a31;    /* Deep, powerful Midnight Blue */
+            --accent-gold: #c5a059;     /* Burnished Gold for prestige */
+            --ivory: #fcfaf7;           /* Off-white background */
+            --text-on-light: #333333;   /* Sharp black/gray for ivory bg */
+            --text-on-dark: #f0f0f0;    /* Light gray for blue bg */
+            --card-white: #ffffff;
             --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
@@ -26,8 +28,8 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: var(--off-white);
-            color: var(--primary-dark);
+            background-color: var(--ivory);
+            color: var(--text-on-light);
             line-height: 1.7;
             overflow-x: hidden;
         }
@@ -38,12 +40,12 @@
             justify-content: space-between;
             align-items: center;
             padding: 1.5rem 8%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.98);
             position: fixed;
             width: 100%;
             z-index: 1000;
-            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+            border-bottom: 2px solid rgba(197, 160, 89, 0.3); /* Subtle Gold border */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .logo {
@@ -51,7 +53,7 @@
             font-size: 1.4rem;
             font-weight: 700;
             letter-spacing: 2px;
-            color: var(--primary-dark);
+            color: var(--primary-blue);
             text-transform: uppercase;
         }
 
@@ -64,7 +66,7 @@
 
         .nav-links a {
             text-decoration: none;
-            color: var(--primary-dark);
+            color: var(--primary-blue);
             font-size: 0.8rem;
             font-weight: 600;
             letter-spacing: 1px;
@@ -81,10 +83,12 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                        url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=2000'); /* Professional placeholder */
+            /* Blue Gradient over your Main Office Photo */
+            background: linear-gradient(rgba(16, 26, 49, 0.85), rgba(16, 26, 49, 0.9)), 
+                        url('Office main.jpeg'); /* This looks for your uploaded office photo */
             background-size: cover;
             background-attachment: fixed;
+            background-position: center;
             color: white;
             padding: 0 5%;
         }
@@ -95,6 +99,7 @@
             font-weight: 400;
             margin-bottom: 1.5rem;
             letter-spacing: -1px;
+            color: #fff;
         }
 
         .hero-content p {
@@ -108,21 +113,20 @@
 
         .btn-cta {
             padding: 1.2rem 2.5rem;
-            background: var(--accent-gold);
-            color: white;
+            background: transparent;
+            color: #fff;
             text-decoration: none;
             text-transform: uppercase;
             font-size: 0.8rem;
             font-weight: 600;
             letter-spacing: 2px;
             transition: var(--transition);
-            border: 1px solid var(--accent-gold);
+            border: 2px solid #fff;
         }
 
         .btn-cta:hover {
-            background: transparent;
-            color: var(--accent-gold);
-            backdrop-filter: blur(5px);
+            background: #fff;
+            color: var(--primary-blue);
         }
 
         /* --- Practice Grid --- */
@@ -132,13 +136,14 @@
 
         .section-header h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin-bottom: 1rem;
+            color: var(--primary-blue);
         }
 
         .gold-divider {
-            width: 60px;
-            height: 2px;
+            width: 80px;
+            height: 3px;
             background: var(--accent-gold);
             margin: 0 auto;
         }
@@ -146,77 +151,98 @@
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         .card {
-            background: #fff;
-            padding: 3rem 2rem;
-            border: 1px solid rgba(0,0,0,0.05);
+            background: var(--card-white);
+            padding: 3.5rem 2.5rem;
+            border: 1px solid rgba(16, 26, 49, 0.05); /* Very subtle Blue border */
             transition: var(--transition);
             position: relative;
-            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
         }
 
         .card:hover {
             transform: translateY(-10px);
             border-color: var(--accent-gold);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            box-shadow: 0 20px 40px rgba(16, 26, 49, 0.08); /* Blue-tinted shadow */
         }
 
+        /* ICON STYLING - Using Gold as requested */
         .card i {
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: var(--accent-gold);
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             display: block;
         }
 
         .card h3 {
             font-family: 'Playfair Display', serif;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.6rem;
+            color: var(--primary-blue);
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            font-weight: 300;
         }
 
         /* --- Contact/Footer --- */
         footer {
-            background: var(--primary-dark);
-            color: #fff;
-            padding: 5rem 10% 2rem;
+            background: var(--primary-blue);
+            color: var(--text-on-dark);
+            padding: 6rem 10% 2rem;
         }
 
         .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 4rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 4rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding-bottom: 5rem;
         }
 
         .footer-col h4 {
             color: var(--accent-gold);
             font-family: 'Playfair Display', serif;
             margin-bottom: 1.5rem;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .footer-col p {
-            font-size: 0.9rem;
-            opacity: 0.7;
-            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            opacity: 0.8;
+            margin-bottom: 0.6rem;
+            font-weight: 300;
         }
+
+        .footer-col strong { color: #fff; font-weight: 600; }
 
         .disclaimer {
             text-align: center;
-            font-size: 0.7rem;
-            opacity: 0.4;
-            padding-top: 2rem;
-            max-width: 800px;
+            font-size: 0.75rem;
+            opacity: 0.5;
+            padding-top: 2.5rem;
+            max-width: 900px;
             margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Responsive Tweaks */
+        @media (max-width: 992px) {
+            .hero-content h1 { font-size: 3rem; }
+            .section-padding { padding: 6rem 5%; }
         }
 
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .hero-content h1 { font-size: 2.5rem; }
+            .grid { grid-template-columns: 1fr; }
+            .card { padding: 2.5rem 2rem; }
         }
     </style>
 </head>
@@ -226,14 +252,13 @@
         <div class="logo">Aulakh Chambers</div>
         <ul class="nav-links">
             <li><a href="#practices">Practice Areas</a></li>
-            <li><a href="#about">The Firm</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
     <section class="hero">
         <div class="hero-content">
-            <i class="bi bi-balance-scale" style="font-size: 3rem; color: var(--accent-gold); margin-bottom: 20px; display: block;"></i>
+            <i class="bi bi-balance-scale" style="font-size: 3rem; color: var(--accent-gold); margin-bottom: 25px; display: block;"></i>
             <h1>Excellence In Advocacy.</h1>
             <p>Strategic Counsel and Dedicated Representation at the Punjab & Haryana High Court and Beyond.</p>
             <a href="#contact" class="btn-cta">Consult with Counsel</a>
@@ -247,24 +272,24 @@
         </div>
         <div class="grid">
             <div class="card">
-                <i class="bi bi-shield-shaded"></i>
+                <i class="bi bi-shield-check"></i>
                 <h3>Criminal Defense</h3>
-                <p>Sophisticated defense strategies for penal litigation and white-collar offenses.</p>
+                <p>Sophisticated defense strategies for penal litigation, white-collar offenses, and regulatory compliance.</p>
             </div>
             <div class="card">
                 <i class="bi bi-building-lawyer"></i>
                 <h3>Civil & Commercial</h3>
-                <p>Resolution of complex property disputes, corporate claims, and insolvency matters.</p>
+                <p>Resolution of complex property disputes, corporate claims, contract enforcement, and insolvency matters.</p>
             </div>
             <div class="card">
-                <i class="bi bi-file-earmark-text"></i>
+                <i class="bi bi-file-earmark-bar-graph"></i>
                 <h3>Constitutional Law</h3>
-                <p>Specialized writ jurisdiction and representation before the High Courts.</p>
+                <p>Specialized writ jurisdiction, fundamental rights advocacy, and representation before High Courts and tribunals.</p>
             </div>
             <div class="card">
-                <i class="bi bi-people"></i>
+                <i class="bi bi-people-fill"></i>
                 <h3>Matrimonial Law</h3>
-                <p>Compassionate and strategic legal solutions for family and domestic disputes.</p>
+                <p>Compassionate yet strategic legal solutions for sensitive family, domestic, and personal disputes.</p>
             </div>
         </div>
     </section>
@@ -284,14 +309,14 @@
                 <p>Punjab</p>
             </div>
             <div class="footer-col">
-                <h4>CONTACT</h4>
-                <p><strong>Direct:</strong> +91 98888-99650</p>
+                <h4>CONNECT</h4>
+                <p><strong>Counsel Direct:</strong> +91 98888-99650</p>
                 <p><strong>Clerk (Rafiq):</strong> +91 95011-34650</p>
                 <p><strong>Email:</strong> aulakhchambers@gmail.com</p>
             </div>
         </div>
         <p class="disclaimer">
-            DISCLAIMER: As per the rules of the Bar Council of India, legal practitioners are not permitted to solicit work or advertise. The information provided on this website is for informational purposes only and does not constitute legal advice or an invitation for a lawyer-client relationship.
+            DISCLAIMER: As per the rules of the Bar Council of India, legal practitioners are not permitted to solicit work or advertise. The information provided on this website is for informational purposes only and does not constitute legal advice, a solicitation, or an invitation for a lawyer-client relationship. All decisions should be based on independent legal counsel.
         </p>
     </footer>
 
